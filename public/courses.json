@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "title": "Mobile Application Development",
+        "instructor": "Rocky Das",
+        "img": "https://i.ibb.co/Xj5ft3G/course-02.jpg",
+        "text": "A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and Android applications like eCommerce, TikTok, Zoom, Facebook etc.",
+        "price": 19.99
+    },
+    {
+        "id": 1,
+        "title": "Machine Learning With Python",
+        "instructor": "Andrew NG",
+        "img": "https://i.ibb.co/PtnJ9qz/course-01.jpg",
+        "text": "Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI. Recently updated with cutting-edge techniques!",
+        "price": 27.99
+    },
+    {
+        "id": 2,
+        "title": "Full Stack Development With MERN",
+        "instructor": "Jhankar Mahbub",
+        "img": "https://i.ibb.co/FD6HMjQ/course-03.jpg",
+        "text": "Learn Full Stack Web Development with MERN: React, React Project, GraphQL, Angular, Nodejs, Express, MongoDB with Mern Projects.",
+        "price": 84.99
+    }
+]
