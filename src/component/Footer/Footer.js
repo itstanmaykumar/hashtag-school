@@ -16,9 +16,9 @@ const Footer = () => {
                         <Link className="my-2 text-decoration-none d-block text-secondary foo-link" to="/services">Testimonial</Link>
                         <Link className="my-2 text-decoration-none d-block text-secondary foo-link" to="/career">Career</Link>
                     </div>
-                    <div className="mt-4 mb-3 text-white col-lg-3 col-sm-6 order-lg-3 order-xs-1">
-                        <h6 className="mb-2 text-white"><span className="border-2 border-bottom border-secondary">Connect Wi</span>th Us</h6>
-                        <div className="my-2 d-flex text-secondary foo-link">
+                    <div className="mt-4 mb-4 text-white col-lg-3 col-sm-6 order-lg-3 order-xs-1">
+                        <h6 className="mb-3 text-white"><span className="border-2 border-bottom border-secondary">Connect Wi</span>th Us</h6>
+                        <div className="mb-3 d-flex text-secondary foo-link">
                             <small className="col-1"><i className="fas fa-map-marker-alt"></i></small>
                             <small>12, Jhankar Mahbub Street,<br />Programming Hero, Bangladesh</small>
                         </div>
@@ -36,18 +36,18 @@ const Footer = () => {
                     <div className="mt-4 col-lg-4 col-sm-12 order-lg-1 order-xs-3">
                         <div className="pb-2">
                             <Link className="navbar-brand" to="/home">
-                                <img className="me-2" width="35" src={logo} alt="cinefest logo" />
+                                <img className="me-1" width="35" src={logo} alt="cinefest logo" />
                                 <span className="fs-4 text-light">hashtag</span>
                             </Link>
                         </div>
                         <small className="text-secondary d-block">Hashtag, Inc.is a for-profit massive open online course provider aimed at professional adults and students. Her, students take courses primarily to improve job-related skills.</small>
                         <div className="mt-2 mb-4">
-                            <Link to="/social"><i className="text-white pe-3 fab fa-facebook-f"></i></Link>
-                            <Link to="/social"><i className="text-white pe-3 fab fa-twitter"></i></Link>
-                            <Link to="/social"><i className="text-white pe-3 fab fa-google-plus-g"></i></Link>
-                            <Link to="/social"><i className="text-white pe-3 fab fa-linkedin-in"></i></Link>
+                            <Link to="/facebook"><i className="text-white pe-3 fab fa-facebook-f"></i></Link>
+                            <Link to="/twitter"><i className="text-white pe-3 fab fa-twitter"></i></Link>
+                            <Link to="/googleplus"><i className="text-white pe-3 fab fa-google-plus-g"></i></Link>
+                            <Link to="/linkedin"><i className="text-white pe-3 fab fa-linkedin-in"></i></Link>
                         </div>
-                        <small className="text-light">Copyright &copy; 2021. <span className="text-light">Tanmay Kumar.</span></small>
+                        <small className="text-light">Copyright &copy; 2022. <span className="text-light">Tanmay Kumar.</span></small>
                         <div>
                             <Link to="/desclaimer" className="text-decoration-none text-secondary foo-link"><small>Desclaimer.</small></Link>
                             <Link to="/tnc" className="px-2 text-decoration-none text-secondary foo-link"><small>Terms & Conditions.</small></Link>
