@@ -7,7 +7,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container">
                 <Link className="navbar-brand" to="/home">
-                    <img width="35" src={logo} alt="main logo" />
+                    <img width="35" src={logo} alt="hashtag logo" />
                     <span className="fs-4">hashtag</span>
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
