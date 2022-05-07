@@ -41,7 +41,7 @@ const Footer = () => {
                             </Link>
                         </div>
                         <small className="text-secondary d-block">Hashtag, Inc.is a for-profit massive open online course provider aimed at professional adults and students. Her, students take courses primarily to improve job-related skills.</small>
-                        <div className="mt-2 mb-4">
+                        <div className="mt-4 mb-4">
                             <Link to="/facebook"><i className="text-white pe-3 fab fa-facebook-f"></i></Link>
                             <Link to="/twitter"><i className="text-white pe-3 fab fa-twitter"></i></Link>
                             <Link to="/googleplus"><i className="text-white pe-3 fab fa-google-plus-g"></i></Link>
