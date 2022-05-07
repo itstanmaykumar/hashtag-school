@@ -18,25 +18,25 @@ const Footer = () => {
                     </div>
                     <div className="mt-4 mb-4 text-white col-lg-3 col-sm-6 order-lg-3 order-xs-1">
                         <h6 className="mb-3 text-white"><span className="border-2 border-bottom border-secondary">Connect Wi</span>th Us</h6>
-                        <div className="mb-3 d-flex text-secondary foo-link">
+                        <div className="my-3 d-flex text-secondary foo-link">
                             <small className="col-1"><i className="fas fa-map-marker-alt"></i></small>
                             <small>12, Jhankar Mahbub Street,<br />Programming Hero, Bangladesh</small>
                         </div>
-                        <div className="my-2 d-flex text-secondary foo-link">
+                        <div className="mb-4 d-flex text-secondary foo-link">
                             <small className="col-1"><i className="fas fa-phone-alt"></i></small>
                             <small>999, +88012345</small>
                         </div>
                         <h6 className="mt-3 mb-3 text-white"><span className="border-2 border-bottom border-secondary">Download O</span>ur App</h6>
                         <div className="row justify-content-between pe-5">
-                            <Link className="pb-3 d-block pe-xl-5 pe-lg-0 pe-md-5 pe-5" to="/playstore">
-                                <img className="w-100 pe-5 pe-sm-0" src={playstore} alt="android" />
+                            <Link className="d-block pe-xl-5 pe-lg-0 pe-md-5 pe-5" to="/playstore">
+                                <img className="d-block w-100 pe-5 pe-sm-0" src={playstore} alt="android" />
                             </Link>
                         </div>
                     </div>
                     <div className="mt-4 col-lg-4 col-sm-12 order-lg-1 order-xs-3">
                         <div className="pb-2">
                             <Link className="navbar-brand" to="/home">
-                                <img className="me-1" width="35" src={logo} alt="cinefest logo" />
+                                <img className="me-1" width="35" src={logo} alt="main logo" />
                                 <span className="fs-4 text-light">hashtag</span>
                             </Link>
                         </div>
