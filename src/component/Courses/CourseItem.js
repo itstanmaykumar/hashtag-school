@@ -23,7 +23,7 @@ const CourseItem = ({ course }) => {
                         <small>{text}</small>
                     </div>
                     <div className="pb-3 text-center">
-                        <Link className='btn btn-dark' to='/coursedtails'>Enroll Now</Link>
+                        <Link className='btn btn-dark shadow' to='/coursedtails'>Enroll Now</Link>
                     </div>
                 </div>
             </div>
