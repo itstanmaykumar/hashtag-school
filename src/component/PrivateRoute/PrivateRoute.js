@@ -2,14 +2,17 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
 import { auth } from '../../Firebase/Firebase.init';
-import useAuth from '../../hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
     const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
 
     if (loading) {
-        return <p>Loading....</p>
+        return (
+            <div className="mx-5 spinner-border text-dark" role="status">
+                <span className="visually-hidden"> Loading...</span>
+            </div>
+        )
     }
 
     if (user) {

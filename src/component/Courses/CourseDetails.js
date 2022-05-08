@@ -49,15 +49,15 @@ const CourseDetails = () => {
                         <h5 className='mt-5'>Enter You Card Information</h5>
                         <div className="my-3">
                             <label htmlFor="cardId" className="form-label">Your Card Number</label>
-                            <input type="text" className="form-control" id="cardId" />
+                            <input type="text" className="form-control" id="cardId" required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="cardPass" className="form-label">Your Password</label>
-                            <input type="password" className="form-control" id="cardPass" />
+                            <input type="password" className="form-control" id="cardPass" required />
                         </div>
                         <div className="mb-4 pb-1">
                             <label htmlFor="veriCode" className="form-label">Verification Code</label>
-                            <input type="number" className="form-control" id="veriCode" />
+                            <input type="number" className="form-control" id="veriCode" required />
                         </div>
                         <p onClick={handlePay} type='submit' className='btn btn-dark d-inline-block'>Proceed Checkout</p>
                     </form>

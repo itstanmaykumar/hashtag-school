@@ -18,7 +18,7 @@ const Signin = () => {
     })
 
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
 
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -31,7 +31,6 @@ const Signin = () => {
             setErrors({ ...errors, email: "Invalid Email" })
             setUserInfo({ ...userInfo, email: "" })
         }
-        // setEmail(e.target.value);
     }
     const handlePasswordChange = (e) => {
         const passwordRegex = /.{6,}/;
@@ -59,6 +58,14 @@ const Signin = () => {
         signInWithGoogle();
     }
 
+    const handleResetPassword = () => {
+        if (userInfo.email != "") {
+            toast.success("Your password reset link was sent to your mail!");
+        } else {
+            toast("Enter your email.");
+        }
+    }
+
     useEffect(() => {
         const error = hookError || googleError;
         if (error) {
@@ -79,11 +86,13 @@ const Signin = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    // console.log(from, user);
 
-    if (user || googleUser) {
-        navigate(from, { replace: true });
-    }
+
+    useEffect(() => {
+        if (user || googleUser) {
+            navigate(from, { replace: true });
+        }
+    }, [user]);
 
     return (
         <div className='container p-5 pt-0'>
@@ -97,7 +106,7 @@ const Signin = () => {
                                 id='email' onBlur={handleEmailChange} required />
                         </div>
                     </div>
-                    <div className='mb-4'>
+                    <div className='mb-2'>
                         <label htmlFor='password'>Password</label>
                         <div className=''>
                             <input className="form-control"
@@ -106,6 +115,9 @@ const Signin = () => {
                                 id='password' onBlur={handlePasswordChange} required
                             />
                         </div>
+                    </div>
+                    <div>
+                        <p onClick={handleResetPassword} className="text-primary btn">Forgot Password?</p>
                     </div>
                     <button type='submit' className='btn btn-dark d-block w-100'>
                         Sign In

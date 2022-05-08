@@ -22,7 +22,7 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
 
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -36,7 +36,6 @@ const Signup = () => {
             setUserInfo({ ...userInfo, email: "" });
         }
 
-        // setEmail(e.target.value);
     };
     const handlePasswordChange = (e) => {
         const passwordRegex = /.{6,}/;
@@ -80,9 +79,11 @@ const Signup = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    if (user || googleUser) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (user || googleUser) {
+            navigate(from, { replace: true });
+        }
+    }, [user]);
 
 
 
@@ -95,7 +96,7 @@ const Signup = () => {
                         <label htmlFor='email'>Email</label>
                         <div className=''>
                             <input className="form-control" type='email' name='email'
-                                id='email' onBlur={handleEmailChange} />
+                                id='email' onBlur={handleEmailChange} required />
                         </div>
                     </div>
                     <div className='mb-4'>
@@ -104,7 +105,7 @@ const Signup = () => {
                             <input className="form-control"
                                 type='password'
                                 name='password'
-                                id='password' onBlur={handlePasswordChange}
+                                id='password' onBlur={handlePasswordChange} required
                             />
                         </div>
                     </div>
