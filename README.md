@@ -16,9 +16,9 @@ cinefest is a for-profit massive open online course provider aimed at profession
 * You can show the developer's profile on About Page.
 
 ## Techonology used in this project:
-    * React
-    * React Router
-    * React Hooks
-    * Firebase
-    * Bootstrap
-    * CSS (Additional)
+* React
+* React Router
+* React Hooks
+* Firebase
+* Bootstrap
+* CSS (Additional)
