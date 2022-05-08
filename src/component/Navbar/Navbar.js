@@ -1,8 +1,30 @@
-import React from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../Firebase/Firebase.init';
 import logo from '../../media/logo.png';
 
 const Navbar = () => {
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser({});
+            }
+        });
+    }, [])
+
+    const handleSignout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container">
@@ -22,17 +44,24 @@ const Navbar = () => {
                             <Link className="nav-link" to="/courses">Courses</Link>
                         </li>
                         <li className="nav-item me-4">
-                            <Link className="nav-link" to="/pay">Pay</Link>
+                            <Link className="nav-link" to="/blogs">Blogs</Link>
                         </li>
                         <li className="nav-item me-4">
-                            <Link className="nav-link" to="/blogs">Blogs</Link>
+                            <Link className="nav-link" to="/pay">Pay</Link>
                         </li>
                         <li className="nav-item me-4">
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link fw-bolder" to="/signin">Sign In</Link>
-                        </li>
+                        {
+                            user?.uid ? (
+                                <li className="nav-item">
+                                    <Link onClick={handleSignout} className="nav-link fw-bolder" to="/">Sign Out</Link>
+                                </li>
+                            ) : (
+                                <li className="nav-item">
+                                    <Link className="nav-link fw-bolder" to="/signin">Sign In</Link>
+                                </li>
+                            )}
                     </ul>
                 </div>
             </div>

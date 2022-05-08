@@ -1,7 +1,10 @@
 import React from 'react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import pay from '../../media/pay.svg';
 
 const Pay = () => {
+    const handlePay = () => toast.success("Course Enrolment Successful!");
     return (
         <div className='container'>
             <h1 className='text-center mt-5'>Complete Your Payment</h1>
@@ -9,22 +12,31 @@ const Pay = () => {
                 <div className='col-lg-6 p-5'>
                     <img className='w-100' src={pay}></img>
                 </div>
-                <div className='col-lg-6 p-5 rounded-20 shadow'>
-                    <h5 className='mt-3'>Enter You Card Information</h5>
-                    <div className="mb-3 mt-5">
-                        <label for="cardId" className="form-label">Your Card Number</label>
+                <form className='col-lg-6 p-5 rounded-20 shadow'>
+                    <h5 className='mt-3'>Select Your Course</h5>
+                    <div class="my-3">
+                        <label htmlFor="inputState" class="form-label">Your Desired Course</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Full Stack Development</option>
+                            <option>Machine Learning</option>
+                            <option>Mobile App Development</option>
+                        </select>
+                    </div>
+                    <h5 className='mt-5'>Enter You Card Information</h5>
+                    <div className="my-3">
+                        <label htmlFor="cardId" className="form-label">Your Card Number</label>
                         <input type="text" className="form-control" id="cardId" />
                     </div>
                     <div className="mb-3">
-                        <label for="cardPass" className="form-label">Your Password</label>
+                        <label htmlFor="cardPass" className="form-label">Your Password</label>
                         <input type="password" className="form-control" id="cardPass" />
                     </div>
                     <div className="mb-4 pb-1">
-                        <label for="veriCode" className="form-label">Verification Code</label>
+                        <label htmlFor="veriCode" className="form-label">Verification Code</label>
                         <input type="number" className="form-control" id="veriCode" />
                     </div>
-                    <span className='btn btn-dark d-inline-block'>Submit Info</span>
-                </div>
+                    <p onClick={handlePay} type='submit' className='btn btn-dark d-inline-block'>Proceed Checkout</p>
+                </form>
             </div>
         </div>
     );

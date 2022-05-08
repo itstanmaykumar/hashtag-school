@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import About from "./component/About/About";
 import Blogs from "./component/Blogs/Blogs";
 import CourseDetails from "./component/Courses/CourseDetails";
@@ -11,8 +12,8 @@ import Pay from "./component/Pay/Pay";
 import Signin from "./component/Signin/Signin";
 import Signup from "./component/Signup/Signup";
 
-
 function App() {
+
   return (
     <div>
       <Navbar></Navbar>
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/courses" element={<Courses></Courses>}></Route>
-        <Route path="/coursesdetails" element={<CourseDetails></CourseDetails>}></Route>
+        <Route path="/courses/:courseId" element={<CourseDetails></CourseDetails>}></Route>
         <Route path="/pay" element={<Pay></Pay>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/about" element={<About></About>}></Route>
@@ -29,6 +30,7 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
