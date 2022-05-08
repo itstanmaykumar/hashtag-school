@@ -1,38 +1,88 @@
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { auth } from "../../Firebase/Firebase.init";
 import GoogleLogo from "../../media/google.svg";
 
 
 const Signin = () => {
-    let navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+    })
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: "",
+    })
 
-    const provider = new GoogleAuthProvider();
-    const googleAuth = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const user = result.user;
-                navigate("/");
-            }).catch((error) => {
-                const errorMessage = error.message;
+    const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
 
-            });
+    const handleEmailChange = (e) => {
+        const emailRegex = /\S+@\S+\.\S+/;
+        const validEmail = emailRegex.test(e.target.value);
+
+        if (validEmail) {
+            setUserInfo({ ...userInfo, email: e.target.value })
+            setErrors({ ...errors, email: "" })
+        } else {
+            setErrors({ ...errors, email: "Invalid Email" })
+            setUserInfo({ ...userInfo, email: "" })
+        }
+        // setEmail(e.target.value);
+    }
+    const handlePasswordChange = (e) => {
+        const passwordRegex = /.{6,}/;
+        const validPassword = passwordRegex.test(e.target.value);
+
+        if (validPassword) {
+            setUserInfo({ ...userInfo, password: e.target.value });
+            setErrors({ ...errors, password: "" });
+        } else {
+            setErrors({ ...errors, password: "Must Conatin Minimum 6 Characters!" });
+            setUserInfo({ ...userInfo, password: "" })
+        }
+
     }
 
     const handleSignin = (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        // console.log(email, password);
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-            });
+        console.log(userInfo)
+
+        signInWithEmail(userInfo.email, userInfo.password);
+
+    }
+    const handleGoogle = () => {
+        signInWithGoogle();
+    }
+
+    useEffect(() => {
+        const error = hookError || googleError;
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid Email!");
+                    break;
+
+                case "auth/invalid-password":
+                    toast("Wrong Password.")
+                    break;
+                default:
+                    toast("Something Went Wrong")
+            }
+        }
+    }, [hookError, googleError])
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    // console.log(from, user);
+
+    if (user || googleUser) {
+        navigate(from, { replace: true });
     }
 
     return (
@@ -43,8 +93,8 @@ const Signin = () => {
                     <div className='mb-2 mt-2'>
                         <label htmlFor='email'>Email</label>
                         <div className=''>
-                            <input className="form-control" type='email' name='email'
-                                id='email' />
+                            <input className="form-control" type='text' name='email'
+                                id='email' onBlur={handleEmailChange} required />
                         </div>
                     </div>
                     <div className='mb-4'>
@@ -53,7 +103,7 @@ const Signin = () => {
                             <input className="form-control"
                                 type='password'
                                 name='password'
-                                id='password'
+                                id='password' onBlur={handlePasswordChange} required
                             />
                         </div>
                     </div>
@@ -71,7 +121,7 @@ const Signin = () => {
                     <hr className="col-5" />
                 </div>
                 <div className=''>
-                    <button onClick={googleAuth} className='px-5 btn btn-outline-dark d-flex justify-content-center align-items-center w-100'
+                    <button onClick={handleGoogle} className='px-5 btn btn-outline-dark d-flex justify-content-center align-items-center w-100'
                     >
                         <img className="d-block" src={GoogleLogo} alt='' />
                         <p className="mt-3 fs-5 ms-3"> Google Sign In </p>

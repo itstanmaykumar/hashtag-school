@@ -14,9 +14,9 @@ const Pay = () => {
                 </div>
                 <form className='col-lg-6 p-5 rounded-20 shadow'>
                     <h5 className='mt-3'>Select Your Course</h5>
-                    <div class="my-3">
-                        <label htmlFor="inputState" class="form-label">Your Desired Course</label>
-                        <select id="inputState" class="form-select">
+                    <div className="my-3">
+                        <label htmlFor="inputState" className="form-label">Your Desired Course</label>
+                        <select id="inputState" className="form-select">
                             <option selected>Full Stack Development</option>
                             <option>Machine Learning</option>
                             <option>Mobile App Development</option>

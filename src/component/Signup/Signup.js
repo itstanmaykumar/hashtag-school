@@ -1,44 +1,100 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogo from "../../media/google.svg";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase.init";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 
 
 
 const Signup = () => {
-    let provider = new GoogleAuthProvider();
-    const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+        confirmPass: "",
+    });
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: "",
+    });
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
 
-    const googleAuth = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const user = result.user;
-                navigate("/");
-            }).catch((error) => {
-                const errorMessage = error.message;
+    const [createUserWithEmailAndPassword, user, loading, hookError] =
+        useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-            });
-    }
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
+
+    const handleEmailChange = (e) => {
+        const emailRegex = /\S+@\S+\.\S+/;
+        const validEmail = emailRegex.test(e.target.value);
+
+        if (validEmail) {
+            setUserInfo({ ...userInfo, email: e.target.value });
+            setErrors({ ...errors, email: "" });
+        } else {
+            setErrors({ ...errors, email: "Invalid email" });
+            setUserInfo({ ...userInfo, email: "" });
+        }
+
+        // setEmail(e.target.value);
+    };
+    const handlePasswordChange = (e) => {
+        const passwordRegex = /.{6,}/;
+        const validPassword = passwordRegex.test(e.target.value);
+
+        if (validPassword) {
+            setUserInfo({ ...userInfo, password: e.target.value });
+            setErrors({ ...errors, password: "" });
+        } else {
+            setErrors({ ...errors, password: "Minimum 6 characters!" });
+            setUserInfo({ ...userInfo, password: "" });
+        }
+    };
+
+    const handleConfirmPasswordChange = (e) => {
+        if (e.target.value === userInfo.password) {
+            setUserInfo({ ...userInfo, confirmPass: e.target.value });
+            setErrors({ ...errors, password: "" });
+        } else {
+            setErrors({ ...errors, password: "Passwords Don't Match" });
+            setUserInfo({ ...userInfo, confirmPass: "" });
+        }
+    };
 
     const handleSignup = (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        // console.log(email, password);
+        console.log(userInfo);
+        createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    };
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-            });
+    const handleGoogle = () => {
+        signInWithGoogle();
     }
+
+    useEffect(() => {
+        if (hookError) {
+            switch (hookError?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid Email.");
+                    break;
+                case "auth/invalid-password":
+                    toast("Wrong Password.");
+                    break;
+                default:
+                    toast("Something Went Wrong");
+            }
+        }
+    }, [hookError]);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    if (user || googleUser) {
+        navigate(from, { replace: true });
+    }
+
 
 
     return (
@@ -50,7 +106,7 @@ const Signup = () => {
                         <label htmlFor='email'>Email</label>
                         <div className=''>
                             <input className="form-control" type='email' name='email'
-                                id='email' />
+                                id='email' onBlur={handleEmailChange} />
                         </div>
                     </div>
                     <div className='mb-4'>
@@ -59,7 +115,7 @@ const Signup = () => {
                             <input className="form-control"
                                 type='password'
                                 name='password'
-                                id='password'
+                                id='password' onBlur={handlePasswordChange}
                             />
                         </div>
                     </div>
@@ -69,7 +125,7 @@ const Signup = () => {
                             <input className="form-control"
                                 type='password'
                                 name='confirmPassword'
-                                id='confirmPassword'
+                                id='confirmPassword' onBlur={handleConfirmPasswordChange}
                             />
                         </div>
                     </div>
@@ -87,7 +143,7 @@ const Signup = () => {
                     <hr className="col-5" />
                 </div>
                 <div className=''>
-                    <button onClick={googleAuth} className='px-5 mb-3 btn btn-outline-dark d-flex justify-content-center align-items-center w-100'
+                    <button onClick={handleGoogle} className='px-5 mb-3 btn btn-outline-dark d-flex justify-content-center align-items-center w-100'
                     >
                         <img className="d-block" src={GoogleLogo} alt='' />
                         <p className="mt-3 fs-5 ms-3"> Google Sign Up </p>

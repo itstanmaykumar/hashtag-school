@@ -9,6 +9,7 @@ import Home from "./component/Home/Home";
 import Navbar from "./component/Navbar/Navbar";
 import NotFound from "./component/NotFound/NotFound";
 import Pay from "./component/Pay/Pay";
+import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import Signin from "./component/Signin/Signin";
 import Signup from "./component/Signup/Signup";
 
@@ -21,8 +22,16 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/courses" element={<Courses></Courses>}></Route>
-        <Route path="/courses/:courseId" element={<CourseDetails></CourseDetails>}></Route>
-        <Route path="/pay" element={<Pay></Pay>}></Route>
+        <Route path="/courses/:courseId" element={
+          <PrivateRoute>
+            <CourseDetails></CourseDetails>
+          </PrivateRoute>
+        }></Route>
+        <Route path="/pay" element={
+          <PrivateRoute>
+            <Pay></Pay>
+          </PrivateRoute>
+        }></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/signin" element={<Signin></Signin>}></Route>
