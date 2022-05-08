@@ -18,7 +18,7 @@ const Signin = () => {
     })
 
     const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
 
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;

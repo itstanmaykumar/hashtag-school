@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import pay from '../../media/pay.svg';
 
 const Pay = () => {
-    const handlePay = () => toast.success("Course Enrolment Successful!");
+    const handlePay = () => toast.success("Course Enrolment Successfu for=valuel!");
     return (
         <div className='container'>
             <h1 className='text-center mt-5'>Complete Your Payment</h1>
@@ -17,7 +17,7 @@ const Pay = () => {
                     <div className="my-3">
                         <label htmlFor="inputState" className="form-label">Your Desired Course</label>
                         <select id="inputState" className="form-select">
-                            <option selected>Full Stack Development</option>
+                            <option>Full Stack Development</option>
                             <option>Machine Learning</option>
                             <option>Mobile App Development</option>
                         </select>

@@ -11,7 +11,6 @@ const Signup = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
         password: "",
-        confirmPass: "",
     });
     const [errors, setErrors] = useState({
         email: "",
@@ -23,7 +22,7 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, user, loading, hookError] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth, { sendEmailVerification: true });
 
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -49,16 +48,6 @@ const Signup = () => {
         } else {
             setErrors({ ...errors, password: "Minimum 6 characters!" });
             setUserInfo({ ...userInfo, password: "" });
-        }
-    };
-
-    const handleConfirmPasswordChange = (e) => {
-        if (e.target.value === userInfo.password) {
-            setUserInfo({ ...userInfo, confirmPass: e.target.value });
-            setErrors({ ...errors, password: "" });
-        } else {
-            setErrors({ ...errors, password: "Passwords Don't Match" });
-            setUserInfo({ ...userInfo, confirmPass: "" });
         }
     };
 
@@ -116,16 +105,6 @@ const Signup = () => {
                                 type='password'
                                 name='password'
                                 id='password' onBlur={handlePasswordChange}
-                            />
-                        </div>
-                    </div>
-                    <div className='mb-4'>
-                        <label htmlFor='confirmPassword'>Confirm Password</label>
-                        <div className=''>
-                            <input className="form-control"
-                                type='password'
-                                name='confirmPassword'
-                                id='confirmPassword' onBlur={handleConfirmPasswordChange}
                             />
                         </div>
                     </div>
