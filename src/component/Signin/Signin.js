@@ -60,7 +60,7 @@ const Signin = () => {
 
     const handleResetPassword = () => {
         if (userInfo.email != "") {
-            toast.success("Your password reset link was sent to your mail!");
+            toast.success("Your password reset link was sent to your mail,");
         } else {
             toast("Enter your email.");
         }
