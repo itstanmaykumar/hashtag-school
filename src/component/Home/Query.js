@@ -39,7 +39,7 @@ const Query = () => {
                         <div className="row mb-3">
                             <div className="col-sm-10">
                                 <div className="form-check">
-                                    <input className="form-check-input bg-dark" type="checkbox" id="gridCheck" checked />
+                                    <input className="form-check-input bg-dark" type="checkbox" id="gridCheck" defaultChecked />
                                     <label className="form-check-label" htmlFor="gridCheck">
                                         Get Offers & Discount Alerts
                                     </label>

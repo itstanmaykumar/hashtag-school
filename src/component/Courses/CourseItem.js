@@ -29,7 +29,7 @@ const CourseItem = ({ course }) => {
                         </div>
                         <div className="pb-4 px-3 d-flex justify-content-between align-items-center">
                             <span className='d-block fw-bolder fs-5'>${price}</span>
-                            <button onClick={() => handleCourseDetails(id)} className='d-inline-block btn btn-dark shadow' to='/coursedtails'>Enroll Now <i class="ps-2 fas fa-caret-right"></i></button>
+                            <button onClick={() => handleCourseDetails(id)} className='d-inline-block btn btn-dark shadow' to='/coursedtails'>Enroll Now <i className="ps-2 fas fa-caret-right"></i></button>
                         </div>
                     </div>
                 </div>
