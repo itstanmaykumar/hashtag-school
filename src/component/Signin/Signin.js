@@ -92,7 +92,7 @@ const Signin = () => {
         if (user || googleUser) {
             navigate(from, { replace: true });
         }
-    }, [user]);
+    }, [user, googleUser]);
 
     return (
         <div className='container p-5 pt-0'>

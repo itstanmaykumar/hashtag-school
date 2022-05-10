@@ -26,7 +26,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light shadow-sm">
             <div className="container">
                 <Link className="navbar-brand" to="/home">
                     <img width="35" src={logo} alt="hashtag logo" />
@@ -37,19 +37,19 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-lg-0">
-                        <li className="nav-item me-4">
+                        <li className="nav-item me-3">
                             <Link className="nav-link" to="/home">Home</Link>
                         </li>
-                        <li className="nav-item me-4">
+                        <li className="nav-item me-3">
                             <Link className="nav-link" to="/courses">Courses</Link>
                         </li>
-                        <li className="nav-item me-4">
+                        <li className="nav-item me-3">
                             <Link className="nav-link" to="/blogs">Blogs</Link>
                         </li>
-                        <li className="nav-item me-4">
+                        <li className="nav-item me-3">
                             <Link className="nav-link" to="/pay">Pay</Link>
                         </li>
-                        <li className="nav-item me-4">
+                        <li className="nav-item me-3">
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
                         {

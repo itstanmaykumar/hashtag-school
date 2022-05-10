@@ -20,7 +20,7 @@ const Home = () => {
                     <p>Learn with fun...</p>
                     <h1 className='fw-bolder'>Improve Your Professional Skill</h1>
                     <h2 className='fw-bolder'>Interactively...</h2>
-                    <small className='d-block mb-4'>Find the right instructor for you. Choose from many topics, skill levels, and languages. Shop thousands of high-quality on-demand online courses. Start learning today.</small>
+                    <small className='d-block mt-3 mb-4'>Find the right instructor for you. Choose from many topics, skill levels, and languages. Shop thousands of high-quality on-demand online courses. Start learning today.</small>
                     <Link className='btn btn-dark shadow' to='/courses'>Get Started</Link>
                 </div>
             </section>
