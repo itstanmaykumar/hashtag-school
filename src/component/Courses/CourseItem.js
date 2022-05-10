@@ -6,7 +6,7 @@ const CourseItem = ({ course }) => {
     const { id, title, instructor, img, text, price } = course;
     let navigate = useNavigate();
 
-    const handleCourseDetails = () => {
+    const handleCourseDetails = (id) => {
         navigate(`/courses/${id}`);
     }
 
@@ -28,7 +28,7 @@ const CourseItem = ({ course }) => {
                         <small>{text}</small>
                     </div>
                     <div className="pb-3 text-center">
-                        <button onClick={() => handleCourseDetails(id)} className='btn btn-dark shadow' to='/coursedtails'>Enroll Now</button>
+                        <button onClick={() => handleCourseDetails(id)} className='btn btn-dark shadow' to='/coursedtails'>Enroll Now <i class="ps-2 fas fa-caret-right"></i></button>
                     </div>
                 </div>
             </div>
