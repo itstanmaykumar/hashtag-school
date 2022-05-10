@@ -9,7 +9,7 @@ const TopCourses = () => {
         <section className='container'>
             <div className='my-4 align-items-center'>
                 <h1 className='fw-bolder text-center'>Pop<span className='border-bottom border-3'>ular Cour</span>ses</h1>
-                <div className="container px-5 py-5 rounded-10 bg-light-pro">
+                <div className="py-5 rounded-10 bg-light-pro">
                     <div className="row g-4">
                         {
                             courses.slice(0, 3).map(course => <CourseItem

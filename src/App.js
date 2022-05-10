@@ -12,6 +12,7 @@ import Pay from "./component/Pay/Pay";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import Signin from "./component/Signin/Signin";
 import Signup from "./component/Signup/Signup";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

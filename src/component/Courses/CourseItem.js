@@ -11,24 +11,26 @@ const CourseItem = ({ course }) => {
     }
 
     return (
-        <div className="col-xl-4 col-md-6 text-start mx-auto">
-            <div className="p-2 h-100">
-                <div className="d-flex flex-column box justify-content-between bg-white h-100 rounded-10 shadow shadow-hover">
-                    <div className='mb-3 shadow rounded-10'>
+        <div className="col-lg-11 col-md-6 text-start mx-auto">
+            <div className="p-3 h-100">
+                <div className="row box justify-content-between bg-white h-100 rounded-10 shadow box">
+                    <div className='col-lg-6 col-md-12 d-flex align-items-center shadow rounded-10'>
                         <img className='w-100 d-block rounded-10' src={img} />
                     </div>
-                    <div className='px-3'>
-                        <h5 className='fw-bolder'>{title}</h5>
-                        <small className='d-flex justify-content-between text-secondary'>
-                            <span className='d-block'>By <span className='fw-bolder'>{instructor}</span></span>
-                            <span className='d-block fw-bolder text-dark'>${price}</span>
-                        </small>
-                    </div>
-                    <div className='pt-2 pb-3 px-3'>
-                        <small>{text}</small>
-                    </div>
-                    <div className="pb-3 text-center">
-                        <button onClick={() => handleCourseDetails(id)} className='btn btn-dark shadow' to='/coursedtails'>Enroll Now <i class="ps-2 fas fa-caret-right"></i></button>
+                    <div className='col-lg-6 col-md-12 d-flex flex-column justify-content-center'>
+                        <div className='px-3 pt-4'>
+                            <h5 className='fw-bolder'>{title}</h5>
+                            <small className='d-flex justify-content-between text-secondary'>
+                                <span className='d-block'>By <span className='fw-bolder'>{instructor}</span></span>
+                            </small>
+                        </div>
+                        <div className='pt-2 pb-3 px-3'>
+                            <small>{text}</small>
+                        </div>
+                        <div className="pb-4 px-3 d-flex justify-content-between align-items-center">
+                            <span className='d-block fw-bolder fs-5'>${price}</span>
+                            <button onClick={() => handleCourseDetails(id)} className='d-inline-block btn btn-dark shadow' to='/coursedtails'>Enroll Now <i class="ps-2 fas fa-caret-right"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
