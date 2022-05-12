@@ -5,9 +5,9 @@ import query from '../../media/query.svg'
 const Query = () => {
     const handleQuery = (e) => {
         e.preventDefault();
-        const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 2000));
+        const resolveTime = new Promise(resolve => setTimeout(resolve, 2000));
         toast.promise(
-            resolveAfter3Sec,
+            resolveTime,
             {
                 pending: 'Sending...',
                 success: "We've got your feedback!",

@@ -4,7 +4,18 @@ import "react-toastify/dist/ReactToastify.css";
 import pay from '../../media/pay.svg';
 
 const Pay = () => {
-    const handlePay = () => toast.success("Course Enrolment Successfu for=valuel!");
+    const handlePay = (e) => {
+        e.preventDefault();
+        const resolveTime = new Promise(resolve => setTimeout(resolve, 2000));
+        toast.promise(
+            resolveTime,
+            {
+                pending: 'Please wait...',
+                success: "Payment Successfull!",
+                error: 'Something Went Wrong!'
+            }
+        )
+    }
     return (
         <div className='container'>
             <h1 className='text-center mt-5'>Complete Your Payment</h1>
@@ -12,7 +23,7 @@ const Pay = () => {
                 <div className='col-lg-6 p-5'>
                     <img className='w-100' src={pay}></img>
                 </div>
-                <form className='col-lg-6 p-5 rounded-20 shadow'>
+                <form onSubmit={handlePay} className='col-lg-6 p-5 rounded-20 shadow'>
                     <h5 className='mt-3'>Select Your Course</h5>
                     <div className="my-3">
                         <label htmlFor="inputState" className="form-label">Your Desired Course</label>
@@ -35,7 +46,7 @@ const Pay = () => {
                         <label htmlFor="veriCode" className="form-label">Verification Code</label>
                         <input type="number" className="form-control" id="veriCode" required />
                     </div>
-                    <p onClick={handlePay} type='submit' className='btn btn-dark d-inline-block'>Proceed Checkout</p>
+                    <button type='submit' className='btn btn-dark d-inline-block'>Proceed Checkout</button>
                 </form>
             </div>
         </div>

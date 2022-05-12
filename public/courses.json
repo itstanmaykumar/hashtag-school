@@ -1,26 +1,79 @@
 [
     {
         "id": 0,
-        "title": "Mobile Application Development",
-        "instructor": "Rocky Das",
-        "img": "https://i.ibb.co/JmcmL4H/course-02.jpg",
-        "text": "A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and Android applications like eCommerce, TikTok, Zoom, Facebook etc.",
-        "price": 19.99
+        "title": "Complete Ethical Hacking",
+        "instructor": "Nantu Maker",
+        "img": "https://i.ibb.co/L5hpMvz/course-06.png",
+        "text": "Learn Ethical Hacking + Penetration Testing! Use real techniques by black hat hackers then learn to defend against them with Python & Linux!",
+        "duration": 40,
+        "student": "47,127",
+        "rating": 4.3,
+        "price": 59.99
     },
     {
         "id": 1,
-        "title": "Machine Learning With Python",
-        "instructor": "Andrew NG",
-        "img": "https://i.ibb.co/PtnJ9qz/course-01.jpg",
-        "text": "Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI. Recently updated with cutting-edge techniques!",
+        "title": "Graphics Design Mastery",
+        "instructor": "Hosuinna Ni",
+        "img": "https://i.ibb.co/jVNmc1X/course-05.png",
+        "text": "The Ultimate Graphic Design Course Which Covers Photoshop, Illustrator, InDesign,Design Theory, Branding and Logo Design with Adobe products.",
+        "duration": 20,
+        "student": "17,458",
+        "rating": 4.4,
         "price": 27.99
     },
     {
         "id": 2,
+        "title": "Machine Learning With Python",
+        "instructor": "Andrew NG",
+        "img": "https://i.ibb.co/Cz6NrFK/course-01.png",
+        "text": "Become a Machine Learning expert. Master the fundamentals of deep learning and break into AI. Recently updated with cutting-edge techniques!",
+        "duration": 100,
+        "student": "18,978",
+        "rating": 4.9,
+        "price": 97.99
+    },
+    {
+        "id": 3,
+        "title": "Mobile Application Development",
+        "instructor": "Rocky Das",
+        "img": "https://i.ibb.co/JmcmL4H/course-02.jpg",
+        "text": "A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and Android applications like eCommerce, TikTok, Zoom, Facebook etc.",
+        "duration": 75,
+        "student": "58,598",
+        "rating": 4.8,
+        "price": 19.99
+    },
+    {
+        "id": 4,
         "title": "Full Stack Development With MERN",
         "instructor": "Jhankar Mahbub",
-        "img": "https://i.ibb.co/FD6HMjQ/course-03.jpg",
+        "img": "https://i.ibb.co/8bBRQyr/course-03.png",
         "text": "Learn Full Stack Web Development with MERN: React, React Project, GraphQL, Angular, Nodejs, Express, MongoDB with Mern Projects.",
+        "duration": 350,
+        "student": "1,87,946",
+        "rating": 5.0,
         "price": 84.99
+    },
+    {
+        "id": 5,
+        "title": "UI Design & UX Research",
+        "instructor": "Kibolbo Aar",
+        "img": "https://i.ibb.co/PcJhHzR/course-04.png",
+        "text": "Become a Designer in 2022! A complete course for product designers: Research the user experience, then design a great user interface.",
+        "duration": 25,
+        "student": "45,378",
+        "rating": 4.2,
+        "price": 45.00
+    },
+    {
+        "id": 6,
+        "title": "Search Engine Optimization",
+        "instructor": "Banano Naam",
+        "img": "https://i.ibb.co/G9wBj7n/course-07.png",
+        "text": "SEO Training From An SEO Agency Owner; Step By Step Process To Rank #1 on Google. Keyword Research, Technical SEO & Much More.",
+        "duration": 42,
+        "student": "155,825",
+        "rating": 4.7,
+        "price": 29.99
     }
 ]
