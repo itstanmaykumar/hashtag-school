@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CourseItem = ({ course }) => {
 
@@ -26,7 +26,7 @@ const CourseItem = ({ course }) => {
                             </small>
                         </div>
                         <div className='pt-2 pb-3 px-3'>
-                            <small>{text}</small>
+                            <small>{text.slice(0, 100)}...<span onClick={() => handleCourseDetails(id)} className="fw-bolder cursor-pointer">Read more</span></small>
                         </div>
                         <div className="pb-4 px-3 d-flex justify-content-between align-items-center">
                             <button onClick={() => handleCourseDetails(id)} className='d-inline-block btn btn-dark shadow' to='/coursedtails'>Enroll Now <i className="ps-2 fas fa-caret-right"></i></button>
